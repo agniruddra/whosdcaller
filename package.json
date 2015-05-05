@@ -1,20 +1,17 @@
 {
-  "name": "chat-example",
+  "name": "telephone_dir",
   "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
+  "description": "Online search engine for contacts",
   "main": "server.js",
-  "repository": "",
-  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "repository": "https://github.com/agniruddra/whosdcaller",
+  "author": "Agniruddra Lahiri <agniruddra.r@gmail.com>",
   "dependencies": {
-    "async": "~0.2.8",
     "client-sessions": "^0.7.0",
     "ejs": "^2.3.1",
     "express": "~3.2.4",
     "express-myconnection": "^1.0.4",
     "http": "0.0.0",
     "mysql": "^2.6.2",
-    "path": "^0.11.14",
-    "serve-favicon": "^2.2.0",
-    "socket.io": "~0.9.14"
+    "serve-favicon": "^2.2.0"
   }
 }
