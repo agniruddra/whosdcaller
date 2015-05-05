@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Who's This!!</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="./home/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="./home/css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="./home/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        table tbody tr:hover{
+            color:#000;
+            font-style:bold;
+        }
+    </style>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i>  <span class="light">Who's</span>This!!
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#search">Search</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Who's This!!</h1>
+                        <p class="intro-text">A free, one stop solution to all your anonymous calls<br>Created by Agniruddra Lahiri.</p>
+                        <a href="#search" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About Who's This</h2>
+                <p>Who's This is a free Contact Management system created by Agniruddra Lahiri.</p>
+                <p>Who's This includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="search" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Cant Identify the Contact??</h2>
+                    <p>Let Us help you find</p>
+                    <form action="javascript:void(0)" method="post" name="search_frm" id="search_frm">
+                    <p><div class="input-group"><input id="phone" type="text" placeholder="012-3456789" name="phone" class="form-control"/><span class="input-group-btn"><button type="submit" class="btn btn-primary search_q"><i class="fa fa-search"></i></button></span></div></p>
+                    </form>
+                    <table id="result" class="table table-bordered table-hover"></table>
+                    <a href="/customers" id="search_dir" class="btn btn-default btn-lg"><i class="fa fa-database"></i>Search Directory</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+                    $('.search_q').click(function() {
+                        var phn = document.getElementById("phone").value;
+                        var q = "/search/"+phn;
+                        $.ajax({
+                        type: "POST",
+                        url:q,
+                        success:function(data){
+                                var txt = "";
+                                var std = "<thead><tr><th>Name</th><th>Address</th><th>Phone</th><th>Email</th></tr></thead>";
+                                if(data.data.length){
+                                 for(var i = 0;i < data.data.length;i++) {
+                                     txt+=std+"<tbody><tr><td>"+data.data[i].name+"</td><td>"+data.data[i].address+"</td><td>"+data.data[i].phone+"</td><td>"+data.data[i].email+"</td></tr></tbody>"
+                                 }
+                                }else{
+                                    txt="<tr><td>No Records Found!!</td></tr>"
+                                }
+                                if(txt != ""){
+                                    $("#result").html(txt);
+                                }
+                                }
+                        });
+                    });
+    </script>
+    
+    
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact Who's This!!</h2>
+                <p>Feel free to email us to provide some feedback on our search engine, Contact directory or to just say hello!</p>
+                <p><a href="mailto:agniruddra@hotmail.com">agniruddra@hotmail.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/agniruddra" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/agniruddra/whosdcaller" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/agniruddra" class="btn btn-default btn-lg"><i class="fa fa-facebook-square fa-fw"></i> <span class="network-name">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div id="map"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Who'sThis 2015</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="./home/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./home/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="./home/js/jquery.easing.min.js"></script>
+    
+     <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5j3VD7OEYOHX3cvtfbhfiVCHpTOFLw14&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="./home/js/grayscale.js"></script>
+
+</body>
+
+</html>

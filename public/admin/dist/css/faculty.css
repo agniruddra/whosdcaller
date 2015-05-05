@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* CSS Document */
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+.content{
+	border: 3px solid;
+	margin-top: 5px;
+	border-radius:10px;
+	height: 110px !important;
+	width: 100%;
+	position:relative
+	
+}
+.face{
+	margin-left: 10px;
+	position:absolute;
+	height:100%;
+	width:100px;
+	box-shadow: 4px 3px 8px #888888;
+	border:medium
+}
+.fname{
+	position:absolute;
+	padding-left: 150px;
+	font-family: 'Noto Sans', sans-serif;
+	font-size:24px
+}
+.fname .desig{	
+	font-size:18px;	
+}
+.fname .specialization{
+	font-size:14px
+
+}
+.btn-wrapper{
+	margin-top:15px;
+	height:50%;
+	width:50%;
+	right:10px;
+	padding-right:25px;
+	position:absolute
+}
+.btn-wrapper ul{
+	list-style:outside none none
+}
+.btn-wrapper .btn{
+	margin:0px 5px;
+	float:right;
+	padding:8px;
+	border-radius: 30px
+}
+.flist{
+	list-style: outside none none;
+}
